@@ -9,8 +9,9 @@ public class CheckPrimeNumber<prime> {
         for (int num = 2; num < finish; num++) {
             if (finish % num == 0){
                 primeNew = false;
+                break;
             }
-            }
+        }
         return primeNew;
     }
 }
