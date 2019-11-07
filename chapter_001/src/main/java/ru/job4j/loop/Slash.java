@@ -3,7 +3,7 @@ package ru.job4j.loop;
 /**
  * 5.9. Крест в псевдографике. [#193170]
  * @author Andrey Markushin
- * @version 1.0
+ * @version 2.0
  * @since 06.11.2019
  */
 public class Slash {
@@ -23,9 +23,7 @@ public class Slash {
                 if (cell == (size -1) - row)  {
                     right = true;
                 }
-                if (left) {
-                    System.out.print("0");
-                } else if (right) {
+                if (left | right) {
                     System.out.print("0");
                 } else {
                     System.out.print(" ");
