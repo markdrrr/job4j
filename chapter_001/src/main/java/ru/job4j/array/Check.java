@@ -14,12 +14,9 @@ public class Check {
      * @return Проверяет весь массив с эталонным под индексом 0 и возвращает результат верно либо нет
      */
     public boolean mono(boolean[] data) {
-        boolean result = false;
+        boolean result = true;
         for (int index = 0 ;index != data.length; index++) {
-            boolean standard = data [0];
-            if (standard == data[index]) {
-                result = true;
-            } else {
+            if (data [0] != data[index]) {
                 result = false;
                 break;
             }
