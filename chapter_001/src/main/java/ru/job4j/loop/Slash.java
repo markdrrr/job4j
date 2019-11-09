@@ -23,7 +23,7 @@ public class Slash {
                 if (cell == (size -1) - row)  {
                     right = true;
                 }
-                if (left | right) {
+                if (left || right) {
                     System.out.print("0");
                 } else {
                     System.out.print(" ");
