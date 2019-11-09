@@ -15,11 +15,11 @@ public class PrimeNumber {
      */
     public int calc(int finish) {
         int count = 0;
+        CheckPrimeNumber chekNumber = new CheckPrimeNumber();
         for (int num = 2; num <= finish; num++) {
             if (num == 2) {
                 count++;
             }
-            CheckPrimeNumber chekNumber = new CheckPrimeNumber();
             boolean prime = chekNumber.check(num);
             if (prime == true && num!=2) {
                 count++;
