@@ -1,7 +1,8 @@
-package ru.job4j.array;
+package ru.job4j.sort;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import ru.job4j.sort.Merge;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -55,9 +56,9 @@ public class MergeTest {
     @Test
     public void whenLeftEmpty() {
         Merge algo = new Merge();
-        int[] expect = {1, 2, 3, 4};
+        int[] expect = {1, 2, 3, 3, 4};
         int[] result = algo.merge(
-                new int[] {},
+                new int[] {3},
                 new int[] {1, 2, 3, 4}
         );
         assertThat(result, is(expect));
