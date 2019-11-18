@@ -9,7 +9,6 @@ public class Board {
                     System.out.print("X");
                 } else System.out.print("  ");
             }
-            // добавляем перевод на новую строку.
             System.out.println();
         }
     }
