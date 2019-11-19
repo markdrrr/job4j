@@ -30,10 +30,7 @@ public class Max {
      * @return максимум из чисел
      */
     public static int max(int first, int second, int third) {
-        int temp = max(first, second);
-        boolean condition = temp > third;
-        int result = condition ? temp : third;
-        return result;
+        return max(third, max(first, second));
     }
 
     /**
@@ -46,9 +43,6 @@ public class Max {
      * @return максимум из чисел
      */
     public static int max(int first, int second, int third, int fourth) {
-        int temp = max(first, second, third);
-        boolean condition = temp > fourth;
-        int result = condition ? temp : fourth;
-        return result;
+        return max(fourth, max(first, second, third));
     }
 }
