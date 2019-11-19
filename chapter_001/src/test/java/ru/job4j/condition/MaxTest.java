@@ -18,8 +18,14 @@ import static org.junit.Assert.assertThat;
         }
 
         @Test
-        public void whenMax1and2() {
-            int result = Max.max(4, 4);
-            assertThat(result, is(4));
+        public void when3Numbers() {
+            int result = Max.max(1,2,3);
+            assertThat(result, is(3));
+        }
+
+        @Test
+        public void when4Numbers() {
+            int result = Max.max(6,8,10,12);
+            assertThat(result, is(12));
         }
     }
