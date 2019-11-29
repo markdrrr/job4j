@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 /**
  * 3. Удаление моделей из массива.[#193324]
  * @author Andrey Markushin
- * @version 2.0
+ * @version 4.0
  * @since 27.11.2019
  */
 public class ShopTest {
