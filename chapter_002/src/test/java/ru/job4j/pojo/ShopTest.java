@@ -25,10 +25,10 @@ public class ShopTest {
         products1[2] = egg;
 
         Product products2[] = new Product[3];
-        products2[0] = bread;
-        products2[1] = egg;
+        products2[0] = milk;
+        products2[1] = bread;
         Shop delete = new Shop();
-        delete.delete(products1,0);
+        delete.delete(products1,2);
 
         assertThat(products1, is(products2));
     }
