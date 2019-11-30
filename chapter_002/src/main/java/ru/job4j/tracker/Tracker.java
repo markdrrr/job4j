@@ -95,20 +95,13 @@ public class Tracker {
      */
     public Item[] findByName(String key) {
         int j = 0;
-        int index = 0;
+        Item[] result = new Item[position];
         for (int i = 0; i < this.position; i++) {
             if (items[i].getName().equals(key)) {
-                j ++;
+                result[j++] = this.items[i];
             }
         }
-        Item[] result = new Item[j];
-        for (int i = 0; i < this.position; i++) {
-            if (items[i].getName().equals(key)) {
-                result[index++] = this.items[i];
-            break;
-            }
-        }
-        return result;
+        return Arrays.copyOf(result, j);
     }
 
     /**
@@ -118,9 +111,9 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
-        for (Item item : items) {
-            if (item != null && item.getId().equals(id)) {
-                result = item;
+        for (int i = 0; i < this.position; i++) {
+            if (items[i] != null && items[i].getId().equals(id)) {
+                result = items[i];
                 break;
             }
         }
