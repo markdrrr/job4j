@@ -58,7 +58,7 @@ public class StartUI {
                 String name = scanner.nextLine();
                 Item[] items = tracker.findByName(name);
                 for (int i = 0; i < items.length; i++) {
-                    System.out.print("Заявка Name: " + items[i].getName() + " id: " + items[i].getId());
+                    System.out.println("Заявка Name: " + items[i].getName() + " id: " + items[i].getId());
                 }
             } else if (select == 6) {
                 System.out.print("Good bye");
