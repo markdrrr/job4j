@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * 2.1. Реализация класса StartUI[#193272]
  * @author Andrey Markushin
- * @version 1.0
+ * @version 1.1
  * @since 30.11.2019
  */
 public class StartUI {

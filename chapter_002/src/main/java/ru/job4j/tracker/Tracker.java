@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * 5. Реализовать класс Tracker[#193318]
  * @author Andrey Markushin
- * @version 1.0
+ * @version 1.1
  * @since 29.11.2019
  */
 public class Tracker {
