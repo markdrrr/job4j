@@ -48,8 +48,12 @@ public class Tracker {
      * @return true если операция завершилась удачно
      */
     public boolean replace(String id, Item item) {
-        this.findById(id).setName(item.getName());
-        return true;
+        boolean result = false;
+        if (this.findById(id) != null) {
+            this.findById(id).setName(item.getName());
+            result = true;
+        }
+        return result;
     }
 
     /**
