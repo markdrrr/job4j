@@ -77,14 +77,6 @@ public class Tracker {
      */
     public Item[] findAll() {
         return Arrays.copyOf(items, position);
-//        Item[] result = new Item[this.position];
-//        int j = 0;
-//        for (int i = 0; i < this.position; i++) {
-//            if (items[i] != null) {
-//                result[j++] = items[i];
-//            }
-//        }
-//        return result;
     }
 
     /**

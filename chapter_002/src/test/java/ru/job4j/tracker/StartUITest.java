@@ -1,11 +1,12 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 /**
- * 5. Input и полиморфизм.[#193280]
+ * 5.1. Тестирование. Подготовка данных.[#193285]
  * @author Andrey Markushin
  * @version 1.0
  * @since 01.12.2019
@@ -36,4 +37,18 @@ public class StartUITest {
         assertThat(replaced.getName(), is("replaced item"));
     }
 
+    @Test
+    public void whenDeleteItem() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("new item");
+        tracker.add(item);
+        String[] answers = {item.getId()};
+        StartUI.delete(new StubInput(answers), tracker);
+        String result = null;
+        if (tracker.delete(item.getId())) {
+        } else {
+            result = "null";
+        }
+        assertThat(result, is("null"));
+    }
 }
