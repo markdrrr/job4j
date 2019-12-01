@@ -49,8 +49,9 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         boolean result = false;
-        if (this.findById(id) != null) {
-            this.findById(id).setName(item.getName());
+        Item foundItem = this.findById(id);
+        if (foundItem != null) {
+            foundItem.setName(item.getName());
             result = true;
         }
         return result;
@@ -108,7 +109,7 @@ public class Tracker {
     public Item findById(String id) {
         Item result = null;
         for (int i = 0; i < this.position; i++) {
-            if (items[i] != null && items[i].getId().equals(id)) {
+            if (items[i].getId().equals(id)) {
                 result = items[i];
                 break;
             }

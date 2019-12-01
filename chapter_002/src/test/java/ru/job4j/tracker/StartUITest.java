@@ -48,4 +48,40 @@ public class StartUITest {
         Item expected = null;
         assertThat(result, is(expected));
     }
+
+    @Test
+    public void whenFindAllItem() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("new item");
+        tracker.add(item);
+        String[] answers = {" "};
+        StartUI.findAll(new StubInput(answers), tracker);
+        Item[] result = tracker.findAll();
+        Item[] expected = {item};
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void whenFindByNameItem() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("new item");
+        tracker.add(item);
+        String[] answers = {item.getName()};
+        StartUI.findByName(new StubInput(answers), tracker);
+        Item[] result = tracker.findByName(item.getName());
+        Item[] expected = {item};
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void whenFindByIdItem() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("new item");
+        tracker.add(item);
+        String[] answers = {item.getId()};
+        StartUI.findById(new StubInput(answers), tracker);
+        Item result = tracker.findById(item.getId());
+        Item expected = item;
+        assertThat(result, is(expected));
+    }
 }
