@@ -44,8 +44,11 @@ public class StartUI {
         String id = input.askStr("Enter id: ");
         String name = input.askStr("Enter new name: ");
         Item item = new Item(name);
-        tracker.replace(id, item);
-        System.out.println("Edited");
+        if (tracker.replace(id, item)) {
+            System.out.println("Edited");
+        } else {
+            System.out.println("Error");
+        }
     }
 
     /**
@@ -55,8 +58,11 @@ public class StartUI {
      */
     public static void delete(Input input, Tracker tracker) {
         String id = input.askStr("Enter id: ");
-        tracker.delete(id);
-        System.out.println("Deleted");
+        if (tracker.delete(id)) {
+            System.out.println("Deleted");
+        } else {
+            System.out.println("Error");
+        }
     }
 
     /**
@@ -67,7 +73,12 @@ public class StartUI {
     public static void findById(Input input, Tracker tracker) {
         String id = input.askStr("Enter id: ");
         Item item = tracker.findById(id);
-        System.out.println("Заявка Name: " + item.getName() + " id: " + item.getId());
+        if(item != null) {
+            System.out.println("Successful search");
+            System.out.println("Заявка Name: " + item.getName() + " id: " + item.getId());
+        } else {
+            System.out.println("Not found");
+        }
     }
 
     /**
