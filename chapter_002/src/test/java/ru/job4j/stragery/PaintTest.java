@@ -40,11 +40,10 @@ public class PaintTest {
                 this.out.toString(),
                 is(
                         new StringBuilder()
-                                .append("++++")
-                                .append("+     +")
-                                .append("+     +")
-                                .append("++++")
-                                .append(System.lineSeparator())
+                                .append("+ + + +" + System.lineSeparator())
+                                .append("+     +" + System.lineSeparator())
+                                .append("+     +" + System.lineSeparator())
+                                .append("+ + + +" + System.lineSeparator())
                                 .toString()
                 )
         );
@@ -56,11 +55,14 @@ public class PaintTest {
         assertThat(
                 this.out.toString(),
                 is(
-                        new StringBuilder()
-                                .append("+")
-                                .append("+ +")
-                                .append("+  +")
-                                .append("+++++")
+                        new StringJoiner(
+                                System.lineSeparator(), "",
+                                System.lineSeparator())
+                                .add("+  ")
+                                .add("++ ")
+                                .add("+++")
+                                .add("++++")
+                                .add("+++++")
                                 .toString()
                 )
         );
@@ -81,11 +83,10 @@ public class PaintTest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("++++")
-                                .append("+     +")
-                                .append("+     +")
-                                .append("++++")
-                                .append(System.lineSeparator())
+                                .append("+ + + +" + System.lineSeparator())
+                                .append("+     +" + System.lineSeparator())
+                                .append("+     +" + System.lineSeparator())
+                                .append("+ + + +" + System.lineSeparator())
                                 .toString()
                 )
         );
