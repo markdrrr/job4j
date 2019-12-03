@@ -3,10 +3,10 @@ package ru.job4j.tracker;
 import java.util.Scanner;
 
 /**
- * 4.1. Разрыв зависимости StartUI от Scanner.[#193282]
+ * 1. Обеспечить бесперебойную работу приложения Tracker.[#193289]
  * @author Andrey Markushin
  * @version 1.1
- * @since 01.12.2019
+ * @since 03.12.2019
  */
 public class ConsoleInput implements Input {
     private Scanner scanner = new Scanner(System.in);
@@ -20,5 +20,14 @@ public class ConsoleInput implements Input {
     @Override
     public int askInt(String question) {
         return Integer.valueOf(askStr(question));
+    }
+
+    @Override
+    public int askInt(String question, int max) {
+        int select = askInt(question);
+        if (select < 0 || select >= max) {
+            throw new IllegalStateException(String.format("Out of about %s > [0, %s]", select, max));
+        }
+        return select;
     }
 }

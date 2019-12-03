@@ -1,10 +1,10 @@
 package ru.job4j.tracker;
 
 /**
- * 4.2. Статические методы.[#193283]a
+ * 1. Обеспечить бесперебойную работу приложения Tracker.[#193289]
  * @author Andrey Markushin
  * @version 1.1
- * @since 30.11.2019
+ * @since 03.12.2019
  */
 public class StartUI {
 
@@ -103,7 +103,7 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
-            int select = input.askInt("Select: ");
+            int select = input.askInt("Select: ", actions.length);
             UserAction action = actions[select];
             run = action.execute(input, tracker);
         }
@@ -121,7 +121,7 @@ public class StartUI {
 
 
     public static void main(String[] args) {
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput();
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction(),
