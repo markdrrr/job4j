@@ -18,8 +18,8 @@ public class ValidateInputTest {
         );
         input.askInt("Enter", 1);
         assertThat(
-                mem,
-                is(String.format("Please enter validate data again"))
+                mem.toString(),
+                is(String.format("Please enter validate data again" + System.lineSeparator()))
         );
         System.setOut(out);
     }
