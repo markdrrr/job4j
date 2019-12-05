@@ -28,7 +28,7 @@ public class FindAllTest {
         Item item2 = new Item("new bug");
         tracker.add(item2);
         int j = 0;
-        FindAll act = new FindAll();
+        FindAll act = new FindAll(1,"Show all items");
         act.execute(new StubInput(new String[] {}), tracker);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add ("All items: ")

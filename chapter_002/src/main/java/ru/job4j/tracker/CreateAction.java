@@ -6,10 +6,10 @@ package ru.job4j.tracker;
  * @version 1.0
  * @since 02.12.2019
  */
-public class CreateAction implements UserAction {
-    @Override
-    public String name() {
-        return "Add new Item";
+public class CreateAction extends BaseAction {
+
+    protected CreateAction(int key, String name) {
+        super(key, name);
     }
 
     /**

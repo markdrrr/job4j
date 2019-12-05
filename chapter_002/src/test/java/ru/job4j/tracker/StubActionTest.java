@@ -19,8 +19,8 @@ public class StubActionTest {
         StubInput input = new StubInput(
                 new String[] {"0"}
         );
-        StubAction action = new StubAction();
-        new StartUI().init(input, new Tracker(), new UserAction[] { action });
+        StubAction action = new StubAction(0,"Stub action");
+        new StartUI().init(input, new Tracker(), new BaseAction[] { action });
         assertThat(action.isCall(), is(true));
     }
 
@@ -32,8 +32,8 @@ public class StubActionTest {
         StubInput input = new StubInput(
                 new String[] {"0"}
         );
-        StubAction action = new StubAction();
-        new StartUI().init(input, new Tracker(), new UserAction[] { action });
+        StubAction action = new StubAction(0,"Stub action");
+        new StartUI().init(input, new Tracker(), new BaseAction[] { action });
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Menu.")
                 .add("0. Stub action")
