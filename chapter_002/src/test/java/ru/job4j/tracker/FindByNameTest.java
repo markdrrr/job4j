@@ -25,7 +25,7 @@ public class FindByNameTest {
         Tracker tracker = new Tracker();
         Item item = new Item("fix bug");
         tracker.add(item);
-        FindByName act = new FindByName();
+        FindByName act = new FindByName(5,"Find items by name");
         act.execute(new StubInput(new String[] {"fix bug"}), tracker);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Заявка Name: " + item.getName() + " id: " + item.getId())

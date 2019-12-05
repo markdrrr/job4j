@@ -1,10 +1,10 @@
 package ru.job4j.tracker;
 
-public class Replace implements UserAction {
-    @Override
-    public String name() {
-        return "Edit item";
+public class Replace extends BaseAction {
+    protected Replace(int key, String name) {
+        super(key, name);
     }
+
 
     /**
      * Изменение name item на новое

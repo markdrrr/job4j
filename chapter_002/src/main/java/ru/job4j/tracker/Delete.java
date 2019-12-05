@@ -1,10 +1,10 @@
 package ru.job4j.tracker;
 
-public class Delete implements UserAction {
-    @Override
-    public String name() {
-        return "Delete item";
+public class Delete extends BaseAction {
+    protected Delete(int key, String name) {
+        super(key, name);
     }
+
 
     /**
      * Удаления item по id из массива

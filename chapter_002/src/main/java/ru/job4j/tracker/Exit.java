@@ -6,10 +6,9 @@ package ru.job4j.tracker;
  * @version 1.0
  * @since 02.12.2019
  */
-public class Exit implements UserAction {
-    @Override
-    public String name() {
-        return "Exit Program";
+public class Exit extends BaseAction {
+    protected Exit(int key, String name) {
+        super(key, name);
     }
 
     @Override

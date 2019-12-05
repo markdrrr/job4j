@@ -99,12 +99,12 @@ public class StartUI {
      * @param input объект для использования пользовательиского ввода
      * @param tracker объект для обращения к классу Tracker
      */
-    public void init(Input input, Tracker tracker, UserAction[] actions) {
+    public void init(Input input, Tracker tracker, BaseAction[] actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
             int select = input.askInt("Select: ", actions.length);
-            UserAction action = actions[select];
+            BaseAction action = actions[select];
             run = action.execute(input, tracker);
         }
     }
@@ -112,10 +112,10 @@ public class StartUI {
     /**
      * Вывод меню
      */
-    private void showMenu(UserAction[] actions) {
+    private void showMenu(BaseAction[] actions) {
         System.out.println("Menu.");
         for (int index = 0; index < actions.length; index++) {
-                System.out.println(index + ". " + actions[index].name());
+                System.out.println(actions[index].key() + ". " + actions[index].name());
         }
     }
 
@@ -124,15 +124,16 @@ public class StartUI {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);
         Tracker tracker = new Tracker();
-        UserAction[] actions = {
-                new CreateAction(),
-                new FindAll(),
-                new Replace(),
-                new Delete(),
-                new FindById(),
-                new FindByName(),
-                new Exit()
+        BaseAction[] actions = {
+                new CreateAction(0,"Add new Item"),
+                new FindAll(1,"Show all items"),
+                new Replace(2,"Edit item"),
+                new Delete(3,"Delete item"),
+                new FindById(4,"Find item by Id"),
+                new FindByName(5,"Find items by name"),
+                new Exit(6,"Exit Program")
         };
         new StartUI().init(validate, tracker, actions);
     }
 }
+
