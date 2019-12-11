@@ -7,8 +7,8 @@ import java.util.List;
  * 1. Телефонный справочник на базе ArrayList[#193244]
  *
  * @author Andrey Markushin
- * @version 1.0
- * @since 09.12.2019
+ * @version 1.1
+ * @since 11.12.2019
  */
 public class PhoneDictionary {
     private List<Person> persons = new ArrayList<Person>();
@@ -24,20 +24,24 @@ public class PhoneDictionary {
      */
     public List<Person> find(String key) {
         List<Person> result = new ArrayList<>();
-        for (int index =0; index < persons.size(); index++) {
-            if (persons.iterator().next().getName().contains(key)) {
-               result.add(persons.get(index));
-            }
-            if (persons.iterator().next().getSurname().contains(key)) {
+        int index = 0;
+        for (Person person : persons) {
+            if (person.getName().contains(key)) {
                 result.add(persons.get(index));
+                break;
             }
-            if (persons.iterator().next().getAddress().contains(key)) {
+            if (person.getSurname().contains(key)) {
                 result.add(persons.get(index));
+                break;
             }
-            if (persons.iterator().next().getPhone().contains(key)) {
+            if (person.getAddress().contains(key)) {
                 result.add(persons.get(index));
+                break;
             }
-            index++;
+            if (person.getPhone().contains(key)) {
+                result.add(persons.get(index));
+                break;
+            }
         }
         return result;
     }
