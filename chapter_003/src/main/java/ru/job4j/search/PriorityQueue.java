@@ -6,8 +6,8 @@ import java.util.LinkedList;
  * 2. Очередь с приоритетом на LinkedList[#193245]
  *
  * @author Andrey Markushin
- * @version 1.0
- * @since 09.12.2019
+ * @version 1.1
+ * @since 11.12.2019
  */
 public class PriorityQueue {
     private LinkedList<Task> tasks = new LinkedList<>();
@@ -18,14 +18,14 @@ public class PriorityQueue {
      */
     public void put(Task task) {
         int PriorityNewTask = task.getPriority();
-        int indexForNewTask = 0;
-        for (int index = 0; index < tasks.size(); index++){
-            int PriorityTaskFromList = tasks.get(index).getPriority();
-            if (PriorityNewTask <= PriorityTaskFromList) {
-                indexForNewTask = index;
+        int index = 0;
+        for (Task taskFromList : tasks) {
+            if (PriorityNewTask <= taskFromList.getPriority()) {
+                break;
             }
+            index++;
         }
-        tasks.add(indexForNewTask,task);
+        tasks.add(index,task);
     }
 
     public Task take() {
