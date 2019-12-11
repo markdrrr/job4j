@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
+
 public class FindAll extends BaseAction {
     protected FindAll(int key, String name) {
         super(key, name);
@@ -18,7 +20,7 @@ public class FindAll extends BaseAction {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         System.out.println("All items: ");
-        Item[] items = tracker.findAll();
+        ArrayList <Item> items = tracker.findAll();
         int j = 0;
         for(Item item : items) {
             System.out.println("Заявка " + j++ +". Name: " + item.getName() + " id: " + item.getId());

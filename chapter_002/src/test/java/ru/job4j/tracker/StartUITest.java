@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -14,11 +16,12 @@ import static org.junit.Assert.*;
 public class StartUITest {
     @Test
     public void whenAddItem() {
-        String[] answers = {"Fix PC"};
-        Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
-        StartUI.createItem(input, tracker);
-        Item created = tracker.findAll()[0];
+        Item item = new Item("Fix PC");
+        tracker.add(item);
+        ArrayList <Item> items = new ArrayList<>();
+        items = tracker.findAll();
+        Item created = items.get(0);
         Item expected = new Item("Fix PC");
         assertThat(created.getName(), is(expected.getName()));
     }
@@ -32,7 +35,8 @@ public class StartUITest {
                 item.getId(), // id сохраненной заявки в объект tracker.
                 "replaced item"
         };
-        StartUI.replace(new StubInput(answers), tracker);
+        BaseAction action = new Replace(0,"Replace");
+        action.execute(new StubInput(answers), tracker);
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(), is("replaced item"));
     }
@@ -43,7 +47,8 @@ public class StartUITest {
         Item item = new Item("new item");
         tracker.add(item);
         String[] answers = {item.getId()};
-        StartUI.delete(new StubInput(answers), tracker);
+        BaseAction action = new Delete(0,"Delete");
+        action.execute(new StubInput(answers), tracker);
         Item result = tracker.findById(item.getId());
         Item expected = null;
         assertThat(result, is(expected));
@@ -55,9 +60,11 @@ public class StartUITest {
         Item item = new Item("new item");
         tracker.add(item);
         String[] answers = {" "};
-        StartUI.findAll(new StubInput(answers), tracker);
-        Item[] result = tracker.findAll();
-        Item[] expected = {item};
+        BaseAction action = new FindAll(0, "Find All");
+        action.execute(new StubInput(answers), tracker);
+        ArrayList <Item> result = tracker.findAll();
+        ArrayList <Item> expected = new ArrayList<Item>();
+        expected.add(item);
         assertThat(result, is(expected));
     }
 
@@ -67,9 +74,9 @@ public class StartUITest {
         Item item = new Item("new item");
         tracker.add(item);
         String[] answers = {item.getName()};
-        StartUI.findByName(new StubInput(answers), tracker);
-        Item[] result = tracker.findByName(item.getName());
-        Item[] expected = {item};
+        ArrayList <Item> result = tracker.findByName(item.getName());
+        ArrayList <Item> expected = new ArrayList<Item>();
+        expected.add(item);
         assertThat(result, is(expected));
     }
 
@@ -79,7 +86,8 @@ public class StartUITest {
         Item item = new Item("new item");
         tracker.add(item);
         String[] answers = {item.getId()};
-        StartUI.findById(new StubInput(answers), tracker);
+        BaseAction actions = new FindById(0,"Find by id");
+        actions.execute(new StubInput(answers), tracker);
         Item result = tracker.findById(item.getId());
         Item expected = item;
         assertThat(result, is(expected));

@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -14,12 +14,7 @@ public class Tracker {
     /**
      * Массив для хранение заявок.
      */
-    private final Item[] items = new Item[100];
-
-    /**
-     * Указатель ячейки для новой заявки.
-     */
-    private int position = 0;
+    private final ArrayList <Item> items = new ArrayList<>();
 
     /**
      * Метод реализаущий добавление заявки в хранилище.
@@ -27,7 +22,7 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[this.position++] = item;
+        items.add(item);
         return item;
     }
 
@@ -65,12 +60,10 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (int i = 0; i < this.position; i++) {
-            if (items[i].getId().equals(id)) {
-                System.arraycopy(items, i + 1, items, i, items.length - i - 1);
-                position--;
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId().contains(id)) {
+                items.remove(i);
                 result = true;
-                break;
             }
         }
         return result;
@@ -80,8 +73,8 @@ public class Tracker {
      * Метод возвращает копию массива без null элементов.
      * @return массив.
      */
-    public Item[] findAll() {
-        return Arrays.copyOf(items, position);
+    public ArrayList <Item> findAll() {
+        return  this.items;
     }
 
     /**
@@ -90,15 +83,14 @@ public class Tracker {
      * @param key имя для поиска.
      * @return массив.
      */
-    public Item[] findByName(String key) {
-        int j = 0;
-        Item[] result = new Item[position];
-        for (int i = 0; i < this.position; i++) {
-            if (items[i].getName().equals(key)) {
-                result[j++] = this.items[i];
+    public ArrayList <Item>  findByName(String key) {
+        ArrayList <Item> result = new ArrayList<>();
+        for (Item item: items) {
+            if (item.getName().contains(key)) {
+                result.add(item);
             }
         }
-        return Arrays.copyOf(result, j);
+        return result;
     }
 
     /**
@@ -108,13 +100,11 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
-        for (int i = 0; i < this.position; i++) {
-            if (items[i].getId().equals(id)) {
-                result = items[i];
-                break;
+        for (Item item: items) {
+            if (item.getId().contains(id)) {
+                result = item;
             }
         }
         return result;
     }
-
 }
