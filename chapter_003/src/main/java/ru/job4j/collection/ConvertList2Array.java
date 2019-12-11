@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 1. Конвертация листа массивов в один лист Integer[#193250].
+ * 1. Конвертация листа массивов в один лист Integer[#193250]
  *
  * @author Andrey Markushin
- * @version 1.0
+ * @version 1.1
  * @since 11.12.2019
  */
 public class ConvertList2Array {
@@ -40,13 +40,11 @@ public class ConvertList2Array {
         int[][] array = new int[groups][cells];
         int row = 0, cell = 0;
         for (Integer num : list) {
-            if (array[row][cell] == 0) {
+                if (cell < cells) {
                 array[row][cell] = num;
-            } else if (array[row][cell] !=0 && cell < cells - 1) {
-                cell++;
-                array[row][cell] = num;
+                    cell++;
             }
-            if (cell == cells - 1) {
+            if (cell == cells) {
                 row++;
                 cell = 0;
             }
