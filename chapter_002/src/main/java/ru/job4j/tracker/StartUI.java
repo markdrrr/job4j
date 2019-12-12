@@ -15,7 +15,7 @@ public class StartUI {
      * @param input объект для использования пользовательиского ввода
      * @param tracker объект для обращения к классу Tracker
      */
-    public void init(Input input, Tracker tracker, ArrayList <BaseAction> actions) {
+    public void init(Input input, Tracker tracker, ArrayList<BaseAction> actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
@@ -28,10 +28,10 @@ public class StartUI {
     /**
      * Вывод меню
      */
-    private void showMenu(ArrayList <BaseAction> actions) {
+    private void showMenu(ArrayList<BaseAction> actions) {
         System.out.println("Menu.");
         for (BaseAction action: actions) {
-            System.out.println(action.key() + ". " + action.name() );
+            System.out.println(action.key() + ". " + action.name());
         }
     }
 
@@ -40,14 +40,14 @@ public class StartUI {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);
         Tracker tracker = new Tracker();
-        ArrayList <BaseAction> actions = new ArrayList<>();
-        actions.add(new CreateAction(0,"Add new Item"));
-        actions.add(new FindAll(1,"Show all items"));
-        actions.add(new Replace(2,"Edit item"));
-        actions.add(new Delete(3,"Delete item"));
-        actions.add(new FindById(4,"Find item by Id"));
-        actions.add(new FindByName(5,"Find items by name"));
-        actions.add(new Exit(6,"Exit Program"));
+        ArrayList<BaseAction> actions = new ArrayList<>();
+        actions.add(new CreateAction(0, "Add new Item"));
+        actions.add(new FindAll(1, "Show all items"));
+        actions.add(new Replace(2, "Edit item"));
+        actions.add(new Delete(3, "Delete item"));
+        actions.add(new FindById(4, "Find item by Id"));
+        actions.add(new FindByName(5, "Find items by name"));
+        actions.add(new Exit(6, "Exit Program"));
         new StartUI().init(validate, tracker, actions);
     }
 }

@@ -1,6 +1,6 @@
 package ru.job4j.sort;
 
-public class User implements Comparable <User> {
+public class User implements Comparable<User> {
     private String name;
     private int age;
 
@@ -19,10 +19,7 @@ public class User implements Comparable <User> {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+        return "User{" + "name='" + name + '\'' + ", age=" + age + '}';
     }
 
     @Override

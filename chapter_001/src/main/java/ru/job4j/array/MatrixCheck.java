@@ -12,12 +12,12 @@ public class MatrixCheck {
         }
 
         boolean result = true;
-        for (int row = 0; row < board.length -1; row++) {
-            for (int cell = 0; cell < board.length -1; cell++) {
+        for (int row = 0; row < board.length - 1; row++) {
+            for (int cell = 0; cell < board.length - 1; cell++) {
                 char sign = board[row][cell];
                 if (sign == 'X') {
-                    if (sign != board[row][cell+1]) {
-                        if (sign != board[row+1][cell]) {
+                    if (sign != board[row][cell + 1]) {
+                        if (sign != board[row + 1][cell]) {
                             result = false;
                         }
                     }

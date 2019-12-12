@@ -21,7 +21,7 @@ public class PrimeNumber {
                 count++;
             }
             boolean prime = chekNumber.check(num);
-            if (prime == true && num!=2) {
+            if (prime && num != 2) {
                 count++;
             }
         }

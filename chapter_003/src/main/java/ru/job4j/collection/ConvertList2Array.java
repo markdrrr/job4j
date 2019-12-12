@@ -18,7 +18,7 @@ public class ConvertList2Array {
      * @param list список массивов.
      * @return возвращает один общий лист <Integer>.
      */
-    public static List<Integer> convert (List<int[]> list) {
+    public static List<Integer> convert(List<int[]> list) {
         List<Integer> result = new ArrayList<>();
         for (int[] arr : list) {
             for (int value : arr) {

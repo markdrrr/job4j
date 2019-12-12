@@ -15,7 +15,7 @@ public class FindLoop {
      */
     public static int indexOf(int[] data, int el) {
         int rst = -1;
-        for (int index = 0 ;index != data.length; index++) {
+        for (int index = 0; index != data.length; index++) {
             if (data[index] == el) {
                 rst = index;
                 break;
@@ -31,9 +31,9 @@ public class FindLoop {
      * @param finish индекс на котором заканчиваем поиск
      * @return возвращает индекс массива в котором нашли число, либо возвращает -1
      */
-    public static int indexOf(int[] data, int el, int start, int finish){
+    public static int indexOf(int[] data, int el, int start, int finish) {
         int rst = -1;
-        for (int index = start ;index != finish; index++) {
+        for (int index = start; index != finish; index++) {
             if (data[index] == el) {
                 rst = index;
                 break;
@@ -48,7 +48,7 @@ public class FindLoop {
      * @return возвращает массив в отсортированном виде
      */
     public static int[] sort(int[] data) {
-        for (int i = 0 ;i != data.length; i++) {
+        for (int i = 0; i != data.length; i++) {
             int min = MinDiapason.findMin(data, i, data.length);
             int index = FindLoop.indexOf(data, min, i, data.length);
             int temp = data[i];

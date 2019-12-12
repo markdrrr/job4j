@@ -3,7 +3,7 @@ package ru.job4j.oop;
 public class Battery {
 
     private int load;
-    public Battery(int volue){
+    public Battery(int volue) {
         this.load = volue;
     }
     public void exchange(Battery another) {

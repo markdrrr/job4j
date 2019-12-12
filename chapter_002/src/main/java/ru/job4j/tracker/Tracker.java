@@ -14,7 +14,7 @@ public class Tracker {
     /**
      * Массив для хранение заявок.
      */
-    private final ArrayList <Item> items = new ArrayList<>();
+    private final ArrayList<Item> items = new ArrayList<>();
 
     /**
      * Метод реализаущий добавление заявки в хранилище.
@@ -73,7 +73,7 @@ public class Tracker {
      * Метод возвращает копию массива без null элементов.
      * @return массив.
      */
-    public ArrayList <Item> findAll() {
+    public ArrayList<Item> findAll() {
         return  this.items;
     }
 
@@ -83,8 +83,8 @@ public class Tracker {
      * @param key имя для поиска.
      * @return массив.
      */
-    public ArrayList <Item>  findByName(String key) {
-        ArrayList <Item> result = new ArrayList<>();
+    public ArrayList<Item>  findByName(String key) {
+        ArrayList<Item> result = new ArrayList<>();
         for (Item item: items) {
             if (item.getName().contains(key)) {
                 result.add(item);

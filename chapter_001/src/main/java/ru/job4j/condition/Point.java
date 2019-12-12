@@ -65,8 +65,8 @@ public class Point {
     public static void main(String[] args) {
         Point a = new Point(0, 0);
         Point b = new Point(0, 2);
-        Point a3 = new Point(0,2,0);
-        Point b3 = new Point(0,0,0);
+        Point a3 = new Point(0, 2, 0);
+        Point b3 = new Point(0, 0, 0);
         double dist = a.distance(b);
         double dist3d = a3.distance3d(b3);
         System.out.println(dist);

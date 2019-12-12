@@ -11,11 +11,11 @@ import java.util.*;
  */
 public class SortUser {
 
-    public static Set<User> sort (List<User> users) {
+    public static Set<User> sort(List<User> users) {
         return new TreeSet<User>(users);
     }
 
-    public static List<User> sortNameLength (List<User> list) {
+    public static List<User> sortNameLength(List<User> list) {
         list.sort(new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {
@@ -25,7 +25,7 @@ public class SortUser {
         return list;
     }
 
-    public static List<User> sortByAllFields (List<User> list) {
+    public static List<User> sortByAllFields(List<User> list) {
         list.sort(new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {
@@ -37,11 +37,11 @@ public class SortUser {
     }
 
     public static void main(String[] args) {
-        List <User> users = new ArrayList<>();
-        users.addAll( Arrays.asList(
+        List<User> users = new ArrayList<>();
+        users.addAll(Arrays.asList(
                 new User("Petr", 30),
                 new User("Igor", 31),
-                new User("Maxim",20)
+                new User("Maxim", 20)
                 )
         );
         System.out.println(users);

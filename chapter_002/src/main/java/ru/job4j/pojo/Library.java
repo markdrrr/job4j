@@ -15,12 +15,12 @@ public class Library {
 
         for (int index = 0; index < books.length; index++) {
             Book bk = books[index];
-            System.out.println(index + ". " +bk.getName() + " содержит " + bk.getPages() + " страниц");
+            System.out.println(index + ". " + bk.getName() + " содержит " + bk.getPages() + " страниц");
         }
 
         System.out.println();
         System.out.println("Rearrange books with index 0 and 3");
-        Book temp = new Book(null,0);
+        Book temp = new Book(null, 0);
         temp = books[0];
         books[0] = books[3];
         books[3] = temp;

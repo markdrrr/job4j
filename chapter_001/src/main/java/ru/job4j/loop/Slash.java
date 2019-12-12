@@ -20,7 +20,7 @@ public class Slash {
                     left = true;
                 }
                 boolean right = false;
-                if (cell == (size -1) - row)  {
+                if (cell == (size - 1) - row)  {
                     right = true;
                 }
                 if (left || right) {

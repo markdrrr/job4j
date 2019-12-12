@@ -15,7 +15,7 @@ public class FindById extends BaseAction {
     public boolean execute(Input input, Tracker tracker) {
         String id = input.askStr("Enter id: ");
         Item item = tracker.findById(id);
-        if(item != null) {
+        if (item != null) {
             System.out.println("Successful search");
             System.out.println("Заявка Name: " + item.getName() + " id: " + item.getId());
         } else {

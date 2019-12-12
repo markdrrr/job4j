@@ -28,12 +28,12 @@ public class UserConvert {
     }
 
     public static void main(String[] args) {
-        List<User> users = new ArrayList <User>();
-        users.add(new User(1,"Petr","Moscow"));
-        users.add(new User(2,"Ivan","Rostov"));
+        List<User> users = new ArrayList<User>();
+        users.add(new User(1, "Petr", "Moscow"));
+        users.add(new User(2, "Ivan", "Rostov"));
         HashMap<Integer, User> mapUsers = new HashMap<Integer, User>();
         mapUsers = process(users);
-        for(HashMap.Entry<Integer, User> user : mapUsers.entrySet()) {
+        for (HashMap.Entry<Integer, User> user : mapUsers.entrySet()) {
             System.out.println(user);
         }
     }

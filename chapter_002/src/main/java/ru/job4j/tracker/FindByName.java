@@ -15,7 +15,7 @@ public class FindByName extends BaseAction {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         String name = input.askStr("Enter name: ");
-        ArrayList <Item> items =tracker.findByName(name);
+        ArrayList<Item> items = tracker.findByName(name);
         if (0 < items.size()) {
             for (int i = 0; i < items.size(); i++) {
                 System.out.println("Заявка Name: " + items.get(i).getName() + " id: " + items.get(i).getId());

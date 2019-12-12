@@ -18,10 +18,10 @@ public class Defragment {
             String cell = array[index];
             int i = 0;
             if (cell == null) {
-                while (array[index] == null && index+i < array.length) {
-                    String temp = array[index+i];
-                    array[index+i] = array[index];
-                    array[index]=temp;
+                while (array[index] == null && index + i < array.length) {
+                    String temp = array[index + i];
+                    array[index + i] = array[index];
+                    array[index] = temp;
                     i++;
                 }
             }
