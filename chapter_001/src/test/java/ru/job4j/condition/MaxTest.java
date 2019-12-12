@@ -19,13 +19,13 @@ import static org.junit.Assert.assertThat;
 
         @Test
         public void when3Numbers() {
-            int result = Max.max(1,2,3);
+            int result = Max.max(1, 2, 3);
             assertThat(result, is(3));
         }
 
         @Test
         public void when4Numbers() {
-            int result = Max.max(6,8,10,12);
+            int result = Max.max(6, 8, 10, 12);
             assertThat(result, is(12));
         }
     }

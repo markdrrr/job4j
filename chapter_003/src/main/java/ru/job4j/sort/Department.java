@@ -9,7 +9,7 @@ import java.util.*;
  * @version 1.0
  * @since 12.12.2019
  */
-public class Department{
+public class Department {
 
     /**
      * Сортировка по возрастанию.

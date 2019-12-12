@@ -28,12 +28,12 @@ public class FindAllTest {
         Item item2 = new Item("new bug");
         tracker.add(item2);
         int j = 0;
-        FindAll act = new FindAll(1,"Show all items");
+        FindAll act = new FindAll(1, "Show all items");
         act.execute(new StubInput(new String[] {}), tracker);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                .add ("All items: ")
-                .add("Заявка " + j++ +". Name: " + item.getName() + " id: " + item.getId())
-                .add("Заявка " + j++ +". Name: " + item2.getName() + " id: " + item2.getId())
+                .add("All items: ")
+                .add("Заявка " + j++ + ". Name: " + item.getName() + " id: " + item.getId())
+                .add("Заявка " + j++ + ". Name: " + item2.getName() + " id: " + item2.getId())
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));
         System.setOut(def);

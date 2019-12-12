@@ -15,7 +15,7 @@ public class SortUserTest {
 
     @Test
     public void sort() {
-        List <User> users = new ArrayList<>();
+        List<User> users = new ArrayList<>();
         User user1 = new User("Сергей", 25);
         User user2 = new User("Иван", 30);
         User user3 = new User("Сергей", 20);
@@ -32,7 +32,7 @@ public class SortUserTest {
 
     @Test
     public void sortNameLength() {
-        List <User> users = new ArrayList<>();
+        List<User> users = new ArrayList<>();
         User user1 = new User("Сергей", 25);
         User user2 = new User("Иван", 30);
         User user3 = new User("Юра", 20);
@@ -49,7 +49,7 @@ public class SortUserTest {
 
     @Test
     public void sortByAllFields() {
-        List <User> users = new ArrayList<>();
+        List<User> users = new ArrayList<>();
         User user1 = new User("Сергей", 25);
         User user2 = new User("Иван", 30);
         User user3 = new User("Юра", 20);

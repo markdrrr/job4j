@@ -47,7 +47,7 @@ public class BankTest {
     public void thenaddAccountToUserAndgetActualAccount() {
         this.account = new Account(100, "Alfa");
         this.bank.addAccountToUser(this.user.getPassport(), this.account);
-        Account result = this.bank.getActualAccount("22222","Alfa");
+        Account result = this.bank.getActualAccount("22222", "Alfa");
         assertThat(this.account, is(result));
     }
 

@@ -8,13 +8,13 @@ package ru.job4j.loop;
 public class FactorialTest {
     @Test
     public void whenCalculateFactorialForFiveThenOneHundreedTwenty() {
-        int n = Factorial.calc (5);
+        int n = Factorial.calc(5);
         assertThat(n, is(120));
     }
 
     @Test
     public void whenCalculateFactorialForZeroThenOne() {
-        int n = Factorial.calc (0);
+        int n = Factorial.calc(0);
         assertThat(n, is(1));
     }
 }

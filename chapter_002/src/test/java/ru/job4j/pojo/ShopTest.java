@@ -19,16 +19,16 @@ public class ShopTest {
         Product bread = new Product("Bread", 4);
         Product egg = new Product("Egg", 19);
 
-        Product products1[] = new Product[3];
+        Product[] products1 = new Product[3];
         products1[0] = milk;
         products1[1] = bread;
         products1[2] = egg;
 
-        Product products2[] = new Product[3];
+        Product[] products2 = new Product[3];
         products2[0] = milk;
         products2[1] = bread;
         Shop delete = new Shop();
-        delete.delete(products1,2);
+        delete.delete(products1, 2);
 
         assertThat(products1, is(products2));
     }
