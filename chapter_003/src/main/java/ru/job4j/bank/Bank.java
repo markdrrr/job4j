@@ -9,14 +9,15 @@ import java.util.Map;
  * Банковские переводы.[#193241]
  *
  * @author Andrey Markushin
- * @version 1.0
+ * @version 1.1
  * @since 12.12.2019
  */
 public class Bank {
-    Map<User, List<Account>> users = new HashMap();
+    private Map<User, List<Account>> users = new HashMap();
 
     public Map<User, List<Account>> getUsers() {
-        return users;
+        Map<User, List<Account>> copyUsers = users;
+        return copyUsers;
     }
 
     /**
@@ -42,7 +43,7 @@ public class Bank {
     public User findUser(String passport) {
         User result = null;
         for (Map.Entry<User, List<Account>> user : this.users.entrySet()) {
-            if (user.getKey().getPassport() == passport) {
+            if (user.getKey().getPassport().equals(passport)) {
                 result = user.getKey();
                 break;
             }
@@ -57,17 +58,6 @@ public class Bank {
      */
     public void addAccountToUser(String passport, Account account) {
         this.users.get(findUser(passport)).add(account);
-//        User find = null;
-//        for (Map.Entry<User, List<Account>> user : this.users.entrySet()) {
-//            if (user.getKey().getPassport() == passport) {
-//                find = user.getKey();
-//                break;
-//            }
-//        }
-//        List accounts = this.users.get(findUser(passport));
-//        if (accounts != null && accounts.indexOf(account) == -1) {
-//            accounts.add(account);
-//        }
     }
 
     /**
@@ -77,10 +67,6 @@ public class Bank {
      */
     public void deleteAccountFromUser(String passport, Account account) {
         this.users.get(findUser(passport)).remove(account);
-//        List accounts = this.users.get(findUser(passport));
-//        if (accounts != null) {
-//           // accounts.remove(account);
-        //}
     }
 
     /**
@@ -100,23 +86,13 @@ public class Bank {
      * @return возвращает найденый счет
      */
     public Account getActualAccount(String passport, String requisite) {
-        List<Account> list = this.users.get(findUser(passport));
-        Account req = null;
+        List<Account> list = getUserAccounts(passport);
+        Account result = null;
         for (Account account: list) {
             if (account.getRequisites().contains(requisite)) {
-                req = account;
+                result = account;
                 break;
             }
-        }
-        int index = 0;
-        Account result = null;
-        if (list == null) {
-            index = -1;
-        } else {
-            index = list.indexOf(req);
-        }
-        if (index != -1) {
-            result = list.get(index);
         }
         return result;
     }
@@ -130,7 +106,11 @@ public class Bank {
      * @return возвращает true если перевод удался.
      */
     public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
-         boolean result = getActualAccount(srcPassport, srcRequisite).transfer(
+        boolean result = false;
+        if (getActualAccount(srcPassport, srcRequisite) == null || getActualAccount(destPassport, dstRequisite) == null) {
+            result = false;
+        }
+          result = getActualAccount(srcPassport, srcRequisite).transfer(
                 getActualAccount(destPassport, dstRequisite), amount);
         return result;
     }
