@@ -57,7 +57,9 @@ public class Bank {
      * @param account новый счет для пользователя.
      */
     public void addAccountToUser(String passport, Account account) {
-        this.users.get(findUser(passport)).add(account);
+        if (findUser(passport) != null) {
+            this.users.get(findUser(passport)).add(account);
+        }
     }
 
     /**
@@ -66,7 +68,9 @@ public class Bank {
      * @param account счет для удаления у пользователя.
      */
     public void deleteAccountFromUser(String passport, Account account) {
-        this.users.get(findUser(passport)).remove(account);
+        if (findUser(passport) != null) {
+            this.users.get(findUser(passport)).remove(account);
+        }
     }
 
     /**
