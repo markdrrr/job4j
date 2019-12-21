@@ -57,8 +57,9 @@ public class Bank {
      * @param account новый счет для пользователя.
      */
     public void addAccountToUser(String passport, Account account) {
-        if (findUser(passport) != null) {
-            this.users.get(findUser(passport)).add(account);
+        User findedUser = findUser(passport);
+        if (findedUser != null) {
+            this.users.get(findedUser).add(account);
         }
     }
 
@@ -68,8 +69,9 @@ public class Bank {
      * @param account счет для удаления у пользователя.
      */
     public void deleteAccountFromUser(String passport, Account account) {
-        if (findUser(passport) != null) {
-            this.users.get(findUser(passport)).remove(account);
+        User findedUser = findUser(passport);
+        if (findedUser != null) {
+            this.users.get(findedUser).remove(account);
         }
     }
 
@@ -80,6 +82,9 @@ public class Bank {
      */
     public List<Account> getUserAccounts(String passport) {
         List accounts = this.users.get(findUser(passport));
+        if (accounts.get(0) == null) {
+            return null;
+        }
         return accounts;
     }
 
@@ -111,11 +116,12 @@ public class Bank {
      */
     public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
         boolean result = false;
-        if (getActualAccount(srcPassport, srcRequisite) == null || getActualAccount(destPassport, dstRequisite) == null) {
+        Account first = getActualAccount(srcPassport, srcRequisite);
+        Account second = getActualAccount(destPassport, dstRequisite);
+        if (first == null || second == null) {
             result = false;
         }
-          result = getActualAccount(srcPassport, srcRequisite).transfer(
-                getActualAccount(destPassport, dstRequisite), amount);
+        result = first.transfer(second, amount);
         return result;
     }
 }
