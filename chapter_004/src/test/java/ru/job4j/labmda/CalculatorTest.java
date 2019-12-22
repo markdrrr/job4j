@@ -9,26 +9,26 @@ import static org.junit.Assert.assertThat;
 
 public class CalculatorTest {
     @Test
-    public void whenAdd1Until3() {
-        Calculator calc = new Calculator();
-        List<Double> buffer = new ArrayList<>();
-        calc.multiple(
-                0, 3, 1,
-                (value, index) -> (double) value + index,
-                result -> buffer.add(result)
-        );
-        assertThat(buffer, is(Arrays.asList(1D, 2D, 3D)));
+    public void whenLinearFunctionThenLinearResults() {
+        Calculator function = new Calculator();
+        List<Double> result = function.diapason(5, 8, x -> 2 * x + 1);
+        List<Double> expected = Arrays.asList(11D, 13D, 15D);
+        assertThat(result, is(expected));
     }
 
     @Test
-    public void whenAdd1Until3new() {
-        Calculator calc = new Calculator();
-        List<Double> buffer = new ArrayList<>();
-        calc.multiple(
-                0, 3, 1,
-                MathUtil::add, //static call
-                buffer::add // non-static call
-        );
-        assertThat(buffer, is(Arrays.asList(1D, 2D, 3D)));
+    public void whenQuadraticFunctionThenQuadraticResults() {
+        Calculator function = new Calculator();
+        List<Double> result = function.diapason(5, 8, x -> Math.pow(x, 2) - x - 2);
+        List<Double> expected = Arrays.asList(18D, 28D, 40D);
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void whenLogarithmicFunctionThenLogarithmicResults() {
+        Calculator function = new Calculator();
+        List<Double> result = function.diapason(5, 8, x -> Math.log(x));
+        List<Double> expected = Arrays.asList(Math.log(5d), Math.log(6d), Math.log(7d));
+        assertThat(result, is(expected));
     }
 }

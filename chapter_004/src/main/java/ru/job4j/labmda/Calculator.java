@@ -1,35 +1,16 @@
 package ru.job4j.labmda;
 
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
 
 public class Calculator {
-    public interface Operation {
-        double calc(int left, int right);
-    }
 
-    public void multiple(int start, int finish, int value, Operation op) {
-        for (int index = start; index != finish; index++) {
-            System.out.println(
-                    op.calc(value, index)
-            );
+    List<Double> diapason(int start, int end, Function<Double, Double> func) {
+        List<Double> result = new ArrayList<>();
+        for (int index = start; index < end; index++) {
+            result.add(func.apply((double) index));
         }
-    }
-
-    public void multiple(int start, int finish, int value,
-                         BiFunction<Integer, Integer, Double> op,
-                         Consumer<Double> media) {
-        for (int index = start; index != finish; index++) {
-            media.accept(op.apply(value, index));
-        }
-    }
-
-    public static void main(String[] args) {
-        Calculator calc = new Calculator();
-        calc.multiple(
-                0, 10, 2,
-                MathUtil::add,
-                result -> System.out.println(result)
-        );
+        return result;
     }
 }
