@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 /**
  * 8. Реализация меню за счет шаблона стратегия.[#193284]
  * @author Andrey Markushin
@@ -18,7 +20,7 @@ public class CreateAction extends BaseAction {
      * @param tracker объект для обращения к классу Tracker
      */
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         tracker.add(item);

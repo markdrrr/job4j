@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 /**
  * 9. Написать тесты на StartUI.[#193273]
  * @author Andrey Markushin
@@ -23,7 +25,7 @@ public class StubAction extends BaseAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
         call = true;
         return false;
     }

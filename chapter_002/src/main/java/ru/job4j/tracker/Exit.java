@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 /**
  * 8. Реализация меню за счет шаблона стратегия.[#193284]
  * @author Andrey Markushin
@@ -12,7 +14,7 @@ public class Exit extends BaseAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
         System.out.print("Good bye");
         return false;
     }

@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class FindAll extends BaseAction {
     protected FindAll(int key, String name) {
@@ -18,12 +19,12 @@ public class FindAll extends BaseAction {
      * @param tracker объект для обращения к классу Tracker
      */
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
         System.out.println("All items: ");
         ArrayList<Item> items = tracker.findAll();
         int j = 0;
         for (Item item : items) {
-            System.out.println("Заявка " + j++ + ". Name: " + item.getName() + " id: " + item.getId());
+            output.accept("Заявка " + j++ + ". Name: " + item.getName() + " id: " + item.getId());
         }
         return true;
     }
