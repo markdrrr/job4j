@@ -83,10 +83,7 @@ public class Bank {
     public List<Account> getUserAccounts(String passport) {
         List accounts = this.users.get(findUser(passport));
         List<Account> nullAccounts = new ArrayList<>();
-        if (accounts.get(0) == null) {
-            return nullAccounts;
-        }
-        return accounts;
+        return accounts != null ? accounts : nullAccounts;
     }
 
     /**
