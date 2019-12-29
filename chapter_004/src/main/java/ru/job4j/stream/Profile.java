@@ -12,7 +12,7 @@ public class Profile {
     }
 
     static List<Address> collect(List<Profile> profiles) {
-        List<Address> adres = profiles.stream().map(profile -> profile.address).collect(Collectors.toList());
+        List<Address> adres = profiles.stream().map(profile -> profile.address).sorted((o1, o2) -> -o2.getCity().compareTo(o1.getCity())).distinct().collect(Collectors.toList());
         for (Address address : adres) {
             System.out.println("Город: " + address.getCity() + " Улица: " + address.getStreet() + " Дом: " +  address.getHome() + " Квартира: " + address.getApartment());
         }
@@ -23,7 +23,8 @@ public class Profile {
         List<Profile> profiles = new ArrayList<>();
         profiles.add(new Profile(new Address("Moscow", "Lenina", 27, 2)));
         profiles.add(new Profile(new Address("Minsk", "Novaya", 17, 3)));
-        profiles.add(new Profile(new Address("London", "Grov", 2, 5)));
+        profiles.add(new Profile(new Address("Minsk", "Novaya", 17, 3)));
+        profiles.add(new Profile(new Address("Astana", "Grov", 2, 5)));
         collect(profiles);
     }
 }
