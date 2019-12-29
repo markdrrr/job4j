@@ -1,6 +1,5 @@
 package ru.job4j.stream;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.*;
@@ -10,13 +9,24 @@ import static org.junit.Assert.assertThat;
 
 public class SchoolTest {
 
-    Student petr = new Student(85);
-    Student jenya = new Student(55);
-    Student ivan = new Student(73);
-    Student denis = new Student(63);
+    Student petr = new Student(85, "Ivanov");
+    Student jenya = new Student(55, "Petrov");
+    Student ivan = new Student(73, "Grach");
+    Student denis = new Student(63, "Petruhina");
     Student vadim = new Student(70);
     Student irina = new Student(98);
     Student grisha = new Student(48);
+
+    @Test
+    public void whenToMap() {
+        List<Student> students = Arrays.asList(petr, jenya, ivan);
+        Map<String, Student> result = School.toMap(students);
+        Map<String, Student> expected = new HashMap<>();
+        expected.put(petr.getSurname(), petr);
+        expected.put(jenya.getSurname(), jenya);
+        expected.put(ivan.getSurname(), ivan);
+        assertThat(result, is(expected));
+    }
 
     @Test
     public void when10A() {
