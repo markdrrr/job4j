@@ -37,14 +37,14 @@ public class SchoolTest {
         assertThat(result, is(expected));
     }
 
-    @Test
-    public void when10B() {
-        List<Student> students = Arrays.asList(petr, jenya, ivan, denis, vadim, irina, grisha);
-        List<Student> tenB = School.collect(students, student -> student.getScore() >= 70);
-        List<Student> result = tenB;
-        List<Student> expected = Arrays.asList(denis, jenya);
-        assertThat(result, is(expected));
-    }
+//    @Test
+//    public void when10B() {
+//        List<Student> students = Arrays.asList(petr, jenya, ivan, denis, vadim, irina, grisha);
+//        List<Student> tenB = School.collect(students, student -> student.getScore() >= 70);
+//        List<Student> result = tenB;
+//        List<Student> expected = Arrays.asList(denis, jenya);
+//        assertThat(result, is(expected));
+//    }
 
     @Test
     public void when10V() {
