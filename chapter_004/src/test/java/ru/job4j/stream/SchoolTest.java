@@ -54,4 +54,12 @@ public class SchoolTest {
         List<Student> expected = Arrays.asList(grisha);
         assertThat(result, is(expected));
     }
+
+    @Test
+    public void whenScoreMoreBound() {
+        List<Student> students = Arrays.asList(petr, null, ivan, null, denis);
+        List<Student> result = School.levelOf(students, 70);
+        List<Student> expected = Arrays.asList(petr, ivan);
+        assertThat(result, is(expected));
+    }
 }
