@@ -1,9 +1,6 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Банковские переводы.[#193241]
@@ -16,8 +13,7 @@ public class Bank {
     private Map<User, List<Account>> users = new HashMap();
 
     public Map<User, List<Account>> getUsers() {
-        Map<User, List<Account>> copyUsers = users;
-        return copyUsers;
+        return users;
     }
 
     /**
@@ -41,14 +37,8 @@ public class Bank {
      * @return user пользователя.
      */
     public User findUser(String passport) {
-        User result = null;
-        for (Map.Entry<User, List<Account>> user : this.users.entrySet()) {
-            if (user.getKey().getPassport().equals(passport)) {
-                result = user.getKey();
-                break;
-            }
-        }
-        return result;
+        Set<User> keys = users.keySet();
+        return keys.stream().filter(user -> user.getPassport().equals(passport)).findFirst().orElse(null);
     }
 
     /**
@@ -94,14 +84,9 @@ public class Bank {
      */
     public Account getActualAccount(String passport, String requisite) {
         List<Account> list = getUserAccounts(passport);
-        Account result = null;
-        for (Account account: list) {
-            if (account.getRequisites().contains(requisite)) {
-                result = account;
-                break;
-            }
-        }
-        return result;
+        return list.stream()
+                .filter(account -> account.getRequisites()
+                        .contains(requisite)).findFirst().orElse(null);
     }
 
     /**
