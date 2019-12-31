@@ -15,55 +15,35 @@ public class SortUserTest {
 
     @Test
     public void sort() {
-        List<User> users = new ArrayList<>();
         User user1 = new User("Сергей", 25);
         User user2 = new User("Иван", 30);
         User user3 = new User("Сергей", 20);
-        users.add(user1);
-        users.add(user2);
-        users.add(user3);
+        List<User> users = new ArrayList<>(List.of(user1, user2, user3));
         ArrayList<User> result = new ArrayList<User>(SortUser.sort(users));
-        ArrayList<User> expected = new ArrayList<>();
-        expected.add(user3);
-        expected.add(user1);
-        expected.add(user2);
+        ArrayList<User> expected = new ArrayList<>(List.of(user3, user1, user2));
         assertEquals(expected, result);
     }
 
     @Test
     public void sortNameLength() {
-        List<User> users = new ArrayList<>();
         User user1 = new User("Сергей", 25);
         User user2 = new User("Иван", 30);
         User user3 = new User("Юра", 20);
-        users.add(user1);
-        users.add(user2);
-        users.add(user3);
+        List<User> users = new ArrayList<>(List.of(user1, user2, user3));
         ArrayList<User> result = (ArrayList<User>) SortUser.sortNameLength(users);
-        ArrayList<User> expected = new ArrayList<>();
-        expected.add(user3);
-        expected.add(user2);
-        expected.add(user1);
+        ArrayList<User> expected = new ArrayList<>(List.of(user3, user2, user1));
         assertEquals(expected, result);
     }
 
     @Test
     public void sortByAllFields() {
-        List<User> users = new ArrayList<>();
         User user1 = new User("Сергей", 25);
         User user2 = new User("Иван", 30);
         User user3 = new User("Юра", 20);
         User user4 = new User("Юра", 19);
-        users.add(user1);
-        users.add(user2);
-        users.add(user3);
-        users.add(user4);
+        List<User> users = new ArrayList<>(List.of(user1, user2, user3, user4));
         ArrayList<User> result = (ArrayList<User>) SortUser.sortByAllFields(users);
-        ArrayList<User> expected = new ArrayList<>();
-        expected.add(user2);
-        expected.add(user1);
-        expected.add(user4);
-        expected.add(user3);
+        ArrayList<User> expected = new ArrayList<>(List.of(user2, user1, user4, user3));
         assertEquals(expected, result);
     }
 
