@@ -1,6 +1,8 @@
 package ru.job4j.sort;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Отсортировать департаменты [#34352]
@@ -65,6 +67,10 @@ public class Department {
         cods.add("K2" + '\\' + "SK1" + '\\' + "SSK1");
         cods.add("K2" + '\\' + "SK1" + '\\' + "SSK2");
         cods.add("K1");
+
+        List<Integer> raz = Stream.of(1,2).filter(x -> x>2)
+                        .collect(Collectors.toList());
+        System.out.println(raz);
 
         System.out.println(cods);
         System.out.println(sort(cods));
