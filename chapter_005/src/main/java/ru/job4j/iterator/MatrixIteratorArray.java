@@ -35,7 +35,7 @@ public class MatrixIteratorArray implements Iterator {
     public Object next() {
         int index = value[row][cell++];
         if (value[row].length == cell) {
-            row ++;
+            row++;
             cell = 0;
         }
         return index;
