@@ -1,6 +1,7 @@
 package ru.job4j.iterator;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * 5.1.4. Создать convert(Iterator<Iterator>)[#223103]
@@ -47,10 +48,9 @@ public class Converter {
             @Override
             public Integer next() {
                 if (!inside.hasNext()) {
-                    inside = it.next();
+                    throw new NoSuchElementException();
                 }
-                int i = inside.next();
-                return i;
+                return inside.next();
             }
         };
     }
