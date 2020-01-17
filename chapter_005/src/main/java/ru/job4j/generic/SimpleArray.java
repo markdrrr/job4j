@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
  * 5.2.1. Реализовать SimpleArray<T>[#223107]
  *
  * @author Andrey Markushin
- * @version 1.0
+ * @version 1.1
  * @since 17.01.2020
  */
 public class SimpleArray <T> implements Iterable<T>  {
@@ -32,6 +32,12 @@ public class SimpleArray <T> implements Iterable<T>  {
         this.objects[position++] = model;
     }
 
+    /**
+     * Проверяет входит ли заданный индекс в размер массива.
+     *
+     * @param index индекс для проверки.
+     * @throws IndexOutOfBoundsException если индекс за пределами массива.
+     */
     private void outOfArray(int index) throws IndexOutOfBoundsException {
         if (index >= this.size) {
             throw new IndexOutOfBoundsException();
@@ -45,6 +51,7 @@ public class SimpleArray <T> implements Iterable<T>  {
      * @param model элемент для добавления.
      */
     public void set(int index, T model) {
+        outOfArray(index);
         this.objects[index] = model;
     }
 
@@ -55,10 +62,9 @@ public class SimpleArray <T> implements Iterable<T>  {
      * @param index индекс эелемента.
      */
     public void remove(int index) {
-        if (index > objects.length - 1) {
-            throw new NoSuchElementException();
-        }
+        outOfArray(index);
         System.arraycopy(objects, index + 1, objects, index, size - index - 1);
+        objects[size - 1] = null;
     }
 
     /**
@@ -67,6 +73,7 @@ public class SimpleArray <T> implements Iterable<T>  {
      * @param index индекс эелемента.
      */
     public T get(int index) {
+        outOfArray(index);
         if (this.objects[index] == null) {
             throw new NoSuchElementException();
         }
@@ -104,9 +111,6 @@ public class SimpleArray <T> implements Iterable<T>  {
         public Object next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
-            }
-            while (objects[cell] == null) {
-                cell++;
             }
             return objects[cell++];
         }
