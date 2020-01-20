@@ -8,7 +8,7 @@ package ru.job4j.generic;
  * @version 1.0
  * @since 17.01.2020
  */
-public abstract class AbstractStore <T extends Base> implements Store<T> {
+public abstract class AbstractStore<T extends Base> implements Store<T> {
     private SimpleArray<T> value = new SimpleArray<>(5);
 
     /**
@@ -30,7 +30,7 @@ public abstract class AbstractStore <T extends Base> implements Store<T> {
     @Override
     public boolean replace(String id, T model) {
         boolean valid = false;
-        for (int index = 0; value.iterator().hasNext() ; index++) {
+        for (int index = 0; value.iterator().hasNext(); index++) {
             if (value.get(index).getId().equals(id)) {
                 value.set(index, model);
                 valid = true;
@@ -48,7 +48,7 @@ public abstract class AbstractStore <T extends Base> implements Store<T> {
     @Override
     public boolean delete(String id) {
         boolean valid = false;
-        for (int index = 0; value.iterator().hasNext() ; index++) {
+        for (int index = 0; value.iterator().hasNext(); index++) {
             if (value.get(index).getId().equals(id)) {
                 value.remove(index);
                 valid = true;
@@ -66,7 +66,7 @@ public abstract class AbstractStore <T extends Base> implements Store<T> {
      */
     @Override
     public T findById(String id) {
-        for (int index = 0; value.iterator().hasNext() ; index++) {
+        for (int index = 0; value.iterator().hasNext(); index++) {
             if (value.get(index).getId().equals(id)) {
                 return value.get(index);
             }

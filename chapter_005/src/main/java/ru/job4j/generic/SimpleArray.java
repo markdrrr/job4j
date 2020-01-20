@@ -7,10 +7,10 @@ import java.util.NoSuchElementException;
  * 5.2.1. Реализовать SimpleArray<T>[#223107]
  *
  * @author Andrey Markushin
- * @version 1.1
+ * @version 1.2
  * @since 17.01.2020
  */
-public class SimpleArray <T> implements Iterable<T>  {
+public class SimpleArray<T> implements Iterable<T>  {
     private Object[] objects;
     private int size = 0;
     private int position = 0;
@@ -96,14 +96,9 @@ public class SimpleArray <T> implements Iterable<T>  {
         @Override
         public boolean hasNext() {
             boolean valid = false;
-            while (cell < size) {
-                if (objects[cell] != null){
+            if (cell < position) {
                     valid = true;
-                    break;
                 }
-                valid = false;
-                cell++;
-            }
             return valid;
         }
 
