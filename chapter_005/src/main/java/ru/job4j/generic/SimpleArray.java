@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
  * 5.2.1. Реализовать SimpleArray<T>[#223107]
  *
  * @author Andrey Markushin
- * @version 1.2
+ * @version 1.3
  * @since 17.01.2020
  */
 public class SimpleArray<T> implements Iterable<T>  {
@@ -45,6 +45,18 @@ public class SimpleArray<T> implements Iterable<T>  {
     }
 
     /**
+     * Проверяет входит ли заданный индекс в пределы добавленных элементов.
+     *
+     * @param index индекс для проверки.
+     * @throws NoSuchElementException если индекс за пределами массива.
+     */
+    private void outOfAddPosition(int index) throws NoSuchElementException {
+        if (index > this.position) {
+            throw new NoSuchElementException();
+        }
+    }
+
+    /**
      * Заменяет указанным элементом (model) элемент, находящийся по индексу index.
      *
      * @param index индекс эелемента который будем заменять.
@@ -52,6 +64,7 @@ public class SimpleArray<T> implements Iterable<T>  {
      */
     public void set(int index, T model) {
         outOfArray(index);
+        outOfAddPosition(index);
         this.objects[index] = model;
     }
 
@@ -63,6 +76,7 @@ public class SimpleArray<T> implements Iterable<T>  {
      */
     public void remove(int index) {
         outOfArray(index);
+        outOfAddPosition(index);
         System.arraycopy(objects, index + 1, objects, index, size - index - 1);
         objects[size - 1] = null;
     }
