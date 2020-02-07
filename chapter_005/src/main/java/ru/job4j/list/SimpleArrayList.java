@@ -4,7 +4,7 @@ package ru.job4j.list;
  * 5.3.0 Создать метод delete для односвязного списка[#223094]
  *
  * @author Andrey Markushin
- * @version 1.0
+ * @version 1.1
  * @since 28.01.2020
  */
 public class SimpleArrayList<E> {
@@ -27,6 +27,9 @@ public class SimpleArrayList<E> {
      * @return удаленный элемент.
      */
     public E delete() {
+        if (size <= 0) {
+            throw new IndexOutOfBoundsException();
+        }
         E result = first.data;
         first = first.next;
         this.size--;
