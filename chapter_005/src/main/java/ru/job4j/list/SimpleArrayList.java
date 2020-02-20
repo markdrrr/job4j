@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
  * 5.3.1. Создать динамический список на базе массива.[#223096]
  *
  * @author Andrey Markushin
- * @version 1.0
+ * @version 1.1
  * @since 08.02.2020
  */
 public class SimpleArrayList<E> implements Iterable<E> {
@@ -62,9 +62,6 @@ public class SimpleArrayList<E> implements Iterable<E> {
      */
     public E get(int index) throws NoSuchElementException {
         outOfArray(index);
-        if (this.container[index] == null) {
-            throw new NoSuchElementException();
-        }
         return (E) this.container[index];
     }
 
@@ -74,7 +71,7 @@ public class SimpleArrayList<E> implements Iterable<E> {
      * @throws IndexOutOfBoundsException, если индекс больше размера массивов.
      */
     private void outOfArray(int index) throws IndexOutOfBoundsException {
-        if (index >= this.size) {
+        if (index >= this.position) {
             throw new IndexOutOfBoundsException();
         }
     }
@@ -113,7 +110,7 @@ public class SimpleArrayList<E> implements Iterable<E> {
             public boolean hasNext() {
                 checkForModifications();
                 boolean valid = false;
-                if (cursor != size && container[cursor] != null) {
+                if (cursor != size) {
                     valid = true;
                 }
                 return valid;

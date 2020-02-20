@@ -33,11 +33,6 @@ public class SimpleArrayListTest {
         result.get(11);
     }
 
-    @Test (expected = NoSuchElementException.class)
-    public void whenGetNullThanException() {
-        result.get(7);
-    }
-
     @Test (expected = ConcurrentModificationException.class)
     public void whenEnsureCapacityWhenIterateThenException() {
         result = new SimpleArrayList<>(2);
