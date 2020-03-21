@@ -58,6 +58,17 @@ public class SimpleLinkedList<E> implements Iterable<E> {
     }
 
     /**
+     * Метод удаляет и возвращает первый эелемент.
+     * @return удаленный элемент.
+     */
+    public E delete() {
+        Node<E> deleted = this.last;
+        this.last = deleted.prev;
+        size--;
+        return deleted.item;
+    }
+
+    /**
      * Проверяет индекс в границе количеств элементов.
      * @param index для проверки.
      * @throws IndexOutOfBoundsException если индекс превышает количество элементов.
