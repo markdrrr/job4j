@@ -7,7 +7,7 @@ import java.util.Iterator;
  * 5.3.2. Создать контейнер на базе связанного списка [#223097]
  *
  * @author Andrey Markushin
- * @version 1.0
+ * @version 1.1
  * @since 20.02.2020
  */
 public class SimpleLinkedList<E> implements Iterable<E> {
@@ -87,11 +87,21 @@ public class SimpleLinkedList<E> implements Iterable<E> {
 
             @Override
             public E next() {
+                Node<E> result = null;
+                Node<E> temp = first;
                 checkForModifications();
                 if (!hasNext()) {
                     throw new IndexOutOfBoundsException();
                 }
-                return (E) get(cursor++);
+                for (int pos = 0; pos < size; pos++) {
+                    if (cursor == pos) {
+                        result = temp;
+                        break;
+                    }
+                    temp = temp.next;
+                }
+                cursor++;
+                return (E) result;
             }
 
             /**
