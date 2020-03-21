@@ -62,8 +62,11 @@ public class SimpleLinkedList<E> implements Iterable<E> {
      * @return удаленный элемент.
      */
     public E delete() {
-        Node<E> deleted = this.last;
-        this.last = deleted.prev;
+        Node<E> deleted = this.first;
+        this.first = deleted.next;
+        if (deleted.next == null) {
+            last = null;
+        }
         size--;
         return deleted.item;
     }
