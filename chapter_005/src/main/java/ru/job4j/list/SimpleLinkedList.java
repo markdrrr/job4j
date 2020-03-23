@@ -101,19 +101,12 @@ public class SimpleLinkedList<E> implements Iterable<E> {
 
             @Override
             public E next() {
-                Node<E> result = null;
-                Node<E> temp = first;
                 checkForModifications();
                 if (!hasNext()) {
                     throw new IndexOutOfBoundsException();
                 }
-                for (int pos = 0; pos < size; pos++) {
-                    if (cursor == pos) {
-                        result = temp;
-                        break;
-                    }
-                    temp = temp.next;
-                }
+                E result = first.item;
+                first = first.next;
                 cursor++;
                 return (E) result;
             }

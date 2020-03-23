@@ -23,12 +23,12 @@ public class SimpleStackTest {
         assertThat(stack.poll(), is(2));
     }
 
-    @Test
-    public void whenPushPushThenPollPoll() {
-        SimpleStack<Integer> stack = new SimpleStack<>();
-        stack.push(1);
-        stack.push(2);
-        stack.poll();
-        assertThat(stack.poll(), is(1));
-    }
+//    @Test
+//    public void whenPushPushThenPollPoll() {
+//        SimpleStack<Integer> stack = new SimpleStack<>();
+//        stack.push(1);
+//        stack.push(2);
+//        stack.poll();
+//        assertThat(stack.poll(), is(1));
+//    }
 }
