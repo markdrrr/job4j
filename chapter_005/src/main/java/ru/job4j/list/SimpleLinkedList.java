@@ -75,6 +75,10 @@ public class SimpleLinkedList<E> implements Iterable<E> {
         return deleted.item;
     }
 
+    public boolean isEmpty() {
+        return this.first == null;
+    }
+
     /**
      * Проверяет индекс в границе количеств элементов.
      * @param index для проверки.

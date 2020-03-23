@@ -12,15 +12,19 @@ public class SimpleQueue<T> {
     private SimpleStack<T> output  = new SimpleStack<>();
 
     public T poll() {
-        T temp = input.poll();
-            while (temp != null) {
-                output.push(temp);
-                temp = null;
-            }
+        transfer();
         return output.poll();
     }
 
     public void push(T value) {
         input.push(value);
+    }
+
+    public void transfer() {
+        if (output.isEmpty()) {
+            while (!input.isEmpty()) {
+                this.output.push(this.input.poll());
+            }
+        }
     }
 }
