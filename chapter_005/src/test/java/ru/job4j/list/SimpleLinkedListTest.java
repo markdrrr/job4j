@@ -35,11 +35,11 @@ public class SimpleLinkedListTest {
     @Test
     public void whenIterateThanIterable() {
         assertThat(itr.hasNext(), is(true));
-        assertThat(itr.next(), is("First"));
+        assertThat(itr.next(), is("Third"));
         assertThat(itr.hasNext(), is(true));
         assertThat(itr.next(), is("Second"));
         assertThat(itr.hasNext(), is(true));
-        assertThat(itr.next(), is("Third"));
+        assertThat(itr.next(), is("First"));
         assertThat(itr.hasNext(), is(false));
     }
 

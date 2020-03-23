@@ -2,6 +2,7 @@ package ru.job4j.list;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * 5.3.2. Создать контейнер на базе связанного списка [#223097]
@@ -21,17 +22,17 @@ public class SimpleLinkedList<E> implements Iterable<E> {
     }
 
     /**
-     * Добавляет элемент в последнию позицию.
+     * Добавляет элемент в начальную позицию.
      * @param item для добавления.
      */
     public void add(E item) {
-        Node<E> prev = last;
+        Node<E> prev = first;
         Node<E> newNode = new Node<>(prev, item, null);
-        last = newNode;
+        first = newNode;
         if (prev == null) {
             first = newNode;
         } else {
-            prev.next = newNode;
+            first.next = prev;
         }
         this.size++;
         this.modCount++;
@@ -62,6 +63,9 @@ public class SimpleLinkedList<E> implements Iterable<E> {
      * @return удаленный элемент.
      */
     public E delete() {
+        if (this.first == null) {
+            throw new NoSuchElementException();
+        }
         Node<E> deleted = this.first;
         this.first = deleted.next;
         if (deleted.next == null) {
