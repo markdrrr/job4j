@@ -94,6 +94,23 @@ public class SimpleArray<T> implements Iterable<T>  {
         return (T) this.objects[index];
     }
 
+    public int indexOf(Object o) {
+        if (o == null) {
+            for (int i = 0; i < position; i++) {
+                if (objects[i] == null) {
+                    return i;
+                }
+            }
+        } else {
+            for (int i = 0; i < position; i++) {
+                if (o.equals(objects[i])) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
     /**
      * Возвращает итератор, предназначенный для обхода данной структуры.
      *
