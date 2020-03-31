@@ -111,6 +111,10 @@ public class SimpleArray<T> implements Iterable<T>  {
         return -1;
     }
 
+    public int size() {
+        return position;
+    }
+
     /**
      * Возвращает итератор, предназначенный для обхода данной структуры.
      *
