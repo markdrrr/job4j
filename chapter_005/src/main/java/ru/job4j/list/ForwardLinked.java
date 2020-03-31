@@ -32,14 +32,7 @@ public class ForwardLinked<T> implements Iterable<T> {
     }
 
     public int size() {
-        int length = 0;
-        Node current = head;
-
-        while (current != null) {
-            length++;
-            current = current.next;
-        }
-        return length;
+        return this.size;
     }
 
     /**
