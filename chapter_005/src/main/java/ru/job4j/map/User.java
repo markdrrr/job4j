@@ -1,13 +1,10 @@
 package ru.job4j.map;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 /**
- * 2. Не перекрывать equals hashCode[#223118]
+ * 3. Переопределить только hashCode[#223116]
  *
  * @author Andrey Markushin
  * @version 1.0
@@ -30,6 +27,11 @@ public class User {
                 "name='" + name + '\'' +
                 ", children=" + children +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, children, birthday);
     }
 
     public User() {
@@ -67,8 +69,10 @@ public class User {
         map.put(second, second);
         System.out.println(map);
         System.out.println(first.equals(second));
+        System.out.println(first.hashCode() + " " + second.hashCode());
         /*
         На печать вышло два идентичных объекта, так как метод equals() дает false и Map считает ключи уникальными.
+        После переопределения метода hashCode(), оба объекта стали давать одинаковый результат
         */
     }
 }
