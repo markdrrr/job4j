@@ -4,7 +4,7 @@ import java.util.*;
 
 
 /**
- * 4. Переопределить только equals[#223117]
+ * 5. Перекрывать и equals и hashCode[#223115]
  *
  * @author Andrey Markushin
  * @version 1.0
@@ -39,10 +39,10 @@ public class User {
                 Objects.equals(birthday, user.birthday);
     }
 
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(name, children, birthday);
-//    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, children, birthday);
+    }
 
     public User() {
     }
@@ -81,8 +81,8 @@ public class User {
         System.out.println(first.equals(second));
         System.out.println(first.hashCode() + " " + second.hashCode());
         /*
-        Все равно на печать вышло два идентичных объекта,
-        метод equals() дает true, а hashCode() результат.
+        На печать вышел один объект, метод equals() дал true
+        и hashCode() одинаковый результат.
         */
     }
 }
