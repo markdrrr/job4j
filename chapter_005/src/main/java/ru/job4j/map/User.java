@@ -4,7 +4,7 @@ import java.util.*;
 
 
 /**
- * 3. Переопределить только hashCode[#223116]
+ * 4. Переопределить только equals[#223117]
  *
  * @author Andrey Markushin
  * @version 1.0
@@ -30,9 +30,19 @@ public class User {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(name, children, birthday);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return children == user.children &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(birthday, user.birthday);
     }
+
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(name, children, birthday);
+//    }
 
     public User() {
     }
@@ -71,8 +81,8 @@ public class User {
         System.out.println(first.equals(second));
         System.out.println(first.hashCode() + " " + second.hashCode());
         /*
-        На печать вышло два идентичных объекта, так как метод equals() дает false и Map считает ключи уникальными.
-        После переопределения метода hashCode(), оба объекта стали давать одинаковый результат
+        Все равно на печать вышло два идентичных объекта,
+        метод equals() дает true, а hashCode() результат.
         */
     }
 }
